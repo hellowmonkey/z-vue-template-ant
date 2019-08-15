@@ -1,31 +1,29 @@
-// ---- color ----
-@primary-color: #52c41a;
-
-// 扩展
-@font-family: PingHei,
-"Lucida Grande",
-"Lucida Sans Unicode",
-STHeiti,
-Helvetica,
-Arial,
-Verdana,
-"sans-serif",
-"PingHei-light",
-SimHei,
-"Droid Sans";
-@font-size-base: 14px;
-@font-size-small: 12px;
-@font-size-large: 16px;
-
-@text-color: #848484;
-@color-green: @primary-color;
-@color-yellow: #fadb14;
-@color-orange: #ff8d0a;
-@color-red: #f5222d;
-@color-pink: #eb2f96;
-@color-blue: #1890ff;
-@color-purple: #722ed1;
-@color-cyan: #13c2c2;
-@color-orange: #fa8c16;
-
+@import '~ant-design-vue/lib/style/themes/default.less';
+// 项目自定义
 @animate-time: .3s;
+@bg-color: #f0f2f5;
+
+@color-main: @primary-color;
+@color-main-dark: darken(@color-main, 36%);
+@color-main-light: lighten(@color-main, 3%);
+
+@color-white: rgba(255,255,255,.9);
+@color-gray-light: #f8f8f8;
+@color-gray: #eee;
+@color-gray-deep: #bbb;
+@color-heavy:   #636363;
+@color-dark:    #363636;
+
+@color-green:   @success-color;
+@color-green-excel: #1C7243;
+@color-green-wechat: #19a318;
+@color-green-light: rgba(179,231,148,.5);
+@color-yellow: @warning-color;
+@color-golden: rgba(255, 205, 60,  1);
+@color-orange:  #ff8d0a;
+@color-red: @error-color;
+@color-red-light: #f99090;
+@color-pink: #ff8aa9;
+@color-blue-light: #00bdfd;
+@color-blue: @info-color;
+

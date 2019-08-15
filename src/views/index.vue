@@ -1,7 +1,7 @@
 <template>
-    <div>
-        Hi
-    </div>
+    <main-box>
+        <a-button>Hi</a-button>
+    </main-box>
 </template>
 
 <script>

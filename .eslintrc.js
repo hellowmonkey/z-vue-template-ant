@@ -22,5 +22,9 @@ module.exports = {
   },
   parserOptions: {
     parser: 'babel-eslint'
-  }
+  },
+  globals: {
+    AMAP_STATUS_SUCCESS: false,
+    AMAP_ANIMATION_BOUNCE: false
+  },
 }

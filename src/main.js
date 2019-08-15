@@ -6,7 +6,7 @@ import storage from './util/storage'
 
 import './components'
 import './plugin/ajax'
-import './plugin/dayjs'
+import './plugin/moment'
 import './filter'
 import './mixin'
 
@@ -23,12 +23,12 @@ router.onReady(route => {
     if (user) {
         vm.$store.commit('setUser', user)
     } else if (!route || route.name !== 'login') {
-        // router.replace({
-        //     name: 'login',
-        //     query: {
-        //         redirect: route && route.fullPath
-        //     }
-        // })
+        router.replace({
+            name: 'login',
+            query: {
+                redirect: route && route.fullPath
+            }
+        })
     }
     vm.$mount('#app')
 })

@@ -1,6 +1,6 @@
 @import './var.less';
-@import './animate.less';
 @import './reset.less';
+@import './animate.less';
 
 // 文本
 .text-elip {
@@ -55,15 +55,15 @@
 
 // 字体
 .font-lg {
-    font-size: @font-size-large;
+    font-size: @font-size-lg;
 }
 
 .font-xlg {
-    font-size: @font-size-large + 2;
+    font-size: @font-size-lg + 2;
 }
 
 .font-sm {
-    font-size: @font-size-small;
+    font-size: @font-size-sm;
 }
 
 .font-italic {
@@ -71,55 +71,53 @@
 }
 
 .font-red {
-    color: @color-red;
+    color: @error-color;
 }
 
 .font-blue {
-    color: @color-blue;
+    color: @primary-color;
 }
 
 .font-green {
-    color: @color-green;
+    color: @success-color;
 }
 
 .font-yellow {
-    color: @color-yellow;
+    color: @warning-color;
 }
 
 .font-gray {
-    color: @text-color;
+    color: @text-color-secondary;
 }
 
 .font-light {
     color: #fff;
 }
 
-
-
 // 背景
 .bg-red {
     color: #fff;
-    background-color: @color-red;
+    background-color: @error-color;
 }
 
 .bg-blue {
     color: #fff;
-    background-color: @color-blue;
+    background-color: @primary-color;
 }
 
 .bg-green {
     color: #fff;
-    background-color: @color-green;
+    background-color: @success-color;
 }
 
 .bg-yellow {
     color: #fff;
-    background-color: @color-yellow;
+    background-color: @warning-color;
 }
 
 .bg-gray {
     color: #fff;
-    background-color: @text-color;
+    background-color: @normal-color;
 }
 
 .bg-light {
@@ -388,50 +386,227 @@
 	}
 }
 
+// 移动端列表
+.mobile-item {
+    position: relative;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 13px -1px rgba(34, 31, 43, 0.15);
+    background-color: #fff;
+    border-radius: 6px;
+    color: #333;
+
+    ul {
+        padding: 10px;
+        margin: 0;
+    }
+
+    li {
+        margin-bottom: 5px;
+        word-break: break-all;
+
+        &:after {
+            content: '';
+            display: table;
+            height: 0;
+            clear: both;
+        }
+
+        &>span:first-child {
+            min-height: 22px;
+            margin-right: 10px;
+            float: left;
+            color: @text-color-secondary;
+
+            &:after {
+                content: '：';
+            }
+        }
+    }
+
+    footer {
+        // padding: 10px;
+        border-top: 1px solid #eee;
+        text-align: right;
+
+        .ant-btn {
+            margin: 10px;
+            margin-left: 0;
+        }
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .open {
+        .hide {
+            display: block;
+        }
+    }
+
+    .icon {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    .status {
+        float: left;
+        margin: 15px;
+    }
+}
+
+.noner {
+    color: darken(@color-gray, 15%);
+    font-size: 1.4em;
+    padding: 20% 0;
+    text-align: center;
+}
+
 .full {
     height: 100% !important;
 }
 
 // 按钮颜色配置
-.nut-button {
+.ant-btn {
     &.btn-green {
-        background: linear-gradient(315deg, @color-green 0%, darken(@color-green, 10%), 100%);
+        background-color: @color-green;
+        border-color: @color-green;
         color: #fff;
+
+        &:hover {
+            background-color: lighten(@color-green, 10%);
+            border-color: lighten(@color-green, 10%);
+            color: #fff;
+        }
+
+        &:focus {
+            background-color: darken(@color-green, 5%);
+            border-color: darken(@color-green, 5%);
+            color: #fff;
+        }
+
+        &.ant-btn-background-ghost {
+            color: @color-green;
+        }
     }
+
     &.btn-yellow {
-        background: linear-gradient(315deg, @color-yellow 0%, darken(@color-yellow, 10%), 100%);
+        background-color: @color-yellow;
+        border-color: @color-yellow;
         color: #fff;
+
+        &:hover {
+            color: #fff;
+            background-color: lighten(@color-yellow, 10%);
+            border-color: lighten(@color-yellow, 10%);
+        }
+
+        &:focus {
+            color: #fff;
+            background-color: darken(@color-yellow, 5%);
+            border-color: darken(@color-yellow, 5%);
+        }
+
+        &.ant-btn-background-ghost {
+            color: @color-yellow;
+        }
     }
-    &.btn-orange {
-        background: linear-gradient(315deg, @color-orange 0%, darken(@color-orange, 10%), 100%);
-        color: #fff;
-    }
-    &.btn-red {
-        background: linear-gradient(315deg, @color-red 0%, darken(@color-red, 10%), 100%);
-        color: #fff;
-    }
+
     &.btn-pink {
-        background: linear-gradient(315deg, @color-pink 0%, darken(@color-pink, 10%), 100%);
+        background-color: @color-pink;
+        border-color: @color-pink;
         color: #fff;
+
+        &:hover {
+            color: #fff;
+            background-color: lighten(@color-pink, 10%);
+            border-color: lighten(@color-pink, 10%);
+        }
+
+        &:focus {
+            color: #fff;
+            background-color: darken(@color-pink, 5%);
+            border-color: darken(@color-pink, 5%);
+        }
+
+        &.ant-btn-background-ghost {
+            color: @color-pink;
+        }
     }
+
+    &.btn-red {
+        background-color: @color-red;
+        border-color: @color-red;
+        color: #fff;
+
+        &:hover {
+            color: #fff;
+            background-color: lighten(@color-red, 10%);
+            border-color: lighten(@color-red, 10%);
+        }
+
+        &:focus {
+            color: #fff;
+            background-color: darken(@color-red, 5%);
+            border-color: darken(@color-red, 5%);
+        }
+
+        &.ant-btn-background-ghost {
+            color: @color-red;
+        }
+    }
+
     &.btn-blue {
-        background: linear-gradient(315deg, @color-blue 0%, darken(@color-blue, 10%), 100%);
+        background-color: @color-blue-light;
+        border-color: @color-blue-light;
         color: #fff;
-    }
-    &.btn-purple {
-        background: linear-gradient(315deg, @color-purple 0%, darken(@color-purple, 10%), 100%);
-        color: #fff;
-    }
-    &.btn-cyan {
-        background: linear-gradient(315deg, @color-cyan 0%, darken(@color-cyan, 10%), 100%);
-        color: #fff;
-    }
-    &.btn-orange {
-        background: linear-gradient(315deg, @color-orange 0%, darken(@color-orange, 10%), 100%);
-        color: #fff;
+
+        &:hover {
+            color: #fff;
+            background-color: lighten(@color-blue-light, 10%);
+            border-color: lighten(@color-blue-light, 10%);
+        }
+
+        &:focus {
+            color: #fff;
+            background-color: darken(@color-blue-light, 5%);
+            border-color: darken(@color-blue-light, 5%);
+        }
+
+        &.ant-btn-background-ghost {
+            color: @color-blue-light;
+        }
     }
 }
 
-.blur {
-    filter: blur(3px);
+.ant-rate .ant-rate-star {
+    margin-right: 3px;
+}
+
+.form .ant-input-disabled {
+    color: inherit;
+}
+
+.ant-modal,
+.form {
+    .ant-col-sm-6 {
+        margin-top: 5px;
+    }
+
+    .ant-radio-group {
+        margin-top: 4px;
+    }
+
+    .ant-checkbox-group {
+        margin-top: 4px;
+    }
+}
+
+.ant-select {
+    width: 100%;
+}
+
+.ant-popover-inner .ant-popover-title {
+    min-width: auto;
 }

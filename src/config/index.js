@@ -15,5 +15,6 @@ export default {
     })(),
     errorLogin: 10000000,
     contentType: 'application/json;charset=UTF-8',
-    isSmWidth: winWidth < 576
+    isSmWidth: winWidth < 576,
+    amapkey: ''
 }
