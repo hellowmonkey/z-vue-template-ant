@@ -1,6 +1,7 @@
 import Vue from 'vue'
-import config from '../config'
 import { mapState } from 'vuex'
+import config from '../config'
+import { copyItem } from '../util'
 
 Vue.mixin({
     data () {
@@ -13,5 +14,6 @@ Vue.mixin({
         ...mapState(['user'])
     },
     methods: {
+        copyItem
     }
 })

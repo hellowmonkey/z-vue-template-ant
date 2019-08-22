@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import 'nprogress/nprogress.css'
 import NProgress from 'nprogress'
-import Main from '../layout/Main.vue'
+import store from '../store'
 
 Vue.use(Router)
 
@@ -10,39 +11,8 @@ NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
 
 export const routes = [{
     path: '/',
-    component: Main,
-    children: [{
-        path: '',
-        name: 'index',
-        meta: {
-            title: '首页',
-            role: [1]
-        },
-        component: () => import('../views/index.vue')
-    }, {
-        path: 'user',
-        name: 'user_list',
-        meta: {
-            title: '用户列表',
-            role: [2]
-        },
-        component: () => import('../views/user_list.vue')
-    }, {
-        path: 'user/add',
-        name: 'user_add',
-        meta: {
-            title: '添加用户',
-            role: [2, 3]
-        },
-        component: () => import('../views/user_add.vue')
-    }]
-}, {
-    path: 'login',
-    name: 'login',
-    meta: {
-        title: '登录'
-    },
-    component: () => import('../views/login.vue')
+    component: () => import('../page/index.vue'),
+    name: 'index'
 }]
 
 const router = new Router({
@@ -60,20 +30,24 @@ const router = new Router({
     }
 })
 
+const filterParams = (query = {}) => {
+    for (let item in query) {
+        const data = query[item]
+        if (/^[\d]+$/.test(data)) {
+            query[item] = Number(data)
+        }
+    }
+    return query
+}
+
 router.beforeEach(async (to, from, next) => {
     NProgress.done().start()
-    for (let item in to.query) {
-        const data = to.query[item]
-        if (/^[\d]+$/.test(data)) {
-            to.query[item] = Number(data)
-        }
+    const { title } = to.meta
+    if (title) {
+        store.commit('setTitle', title)
     }
-    for (let item in to.params) {
-        const data = to.params[item]
-        if (/^[\d]+$/.test(data)) {
-            to.params[item] = Number(data)
-        }
-    }
+    filterParams(to.query)
+    filterParams(to.params)
     next()
 })
 

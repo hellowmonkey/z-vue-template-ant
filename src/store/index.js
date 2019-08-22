@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import { sessionStorage } from '../util/storage'
+
 import user from './modules/user'
 
 Vue.use(Vuex)
@@ -8,26 +10,24 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     state: {
         user: null,
-        title: '',
-        siderCollapsed: false,
-        scrollTop: 0
+        title: ''
     },
     mutations: {
         setUser (state, data = {}) {
-            state.user = data
+            if (state.user && data) {
+                state.user = Object.assign(state.user, data)
+            } else {
+                state.user = data
+            }
+            if (state.user) {
+                sessionStorage.set('user', state.user)
+            } else {
+                sessionStorage.remove('user')
+            }
         },
         setTitle (state, data) {
             state.title = data
             document.title = data
-        },
-        setLoading (state, data = {}) {
-            state[data.type] = Boolean(data.data)
-        },
-        setCollapsed (state, data) {
-            state.siderCollapsed = Boolean(data)
-        },
-        setScrollTop (state, data) {
-            state.scrollTop = Number(data)
         }
     },
     actions: {
