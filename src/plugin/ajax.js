@@ -34,10 +34,16 @@ flyio.interceptors.response.use((response) => {
     const err = {
         code
     }
-    if (code !== 200) {
+    if (code !== config.successNo) {
         err.message = data.message || `${code}`
+        if (typeof err.message === 'object') {
+            err.message = Object.values(err.message)[0]
+        }
         console.error(err)
-        alert(`操作失败: ${err.message}`)
+        Vue.prototype.$notification.error({
+            message: '操作失败',
+            description: err.message
+        })
         if (code === config.errorLogin) {
             return router.replace({ name: 'login' })
         }
@@ -67,7 +73,10 @@ flyio.interceptors.response.use((response) => {
             err.message = messages[err.status]
         }
     }
-    alert(err.message)
+    Vue.prototype.$error({
+        title: '请求失败',
+        content: err.message
+    })
     return Promise.reject(error)
 })
 
